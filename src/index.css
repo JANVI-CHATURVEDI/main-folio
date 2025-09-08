@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grid Background */
+@layer utilities {
+  .bg-line-grid {
+    background-color: white;
+    background-image: 
+      linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .dark .bg-line-grid {
+    background-color: black;
+    background-image: 
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  }
+
+
+
+/* Blurry Squares */
+.blur-square {
+  @apply absolute w-40 h-40 rounded-xl;
+  filter: blur(60px);
+  animation: floaty 10s ease-in-out infinite alternate;
+}
+
+/* Light mode: soft gray glow */
+.blur-square-light {
+  background: rgba(120, 120, 120, 0.2);
+}
+
+/* Dark mode: purple glow */
+.dark .blur-square-dark {
+  background: rgba(168, 85, 247, 0.25);
+  /* Tailwind purple-500 with opacity */
+}
+}
+
+/* Floating animation */
+@keyframes floaty {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-25px) translateX(15px);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 2s infinite; /* slower blink */
+  color: #ffffff; /* pure white cursor */
+}

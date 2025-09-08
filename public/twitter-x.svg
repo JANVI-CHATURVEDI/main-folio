@@ -1,0 +1,8 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="currentColor" 
+  className="w-5 h-5 text-purple-500"
+>
+  <path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zM16.5 8.5l-7 7h-3v-3l7-7h3v3z" />
+</svg>
