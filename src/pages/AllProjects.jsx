@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import Footer from "../components/Footer";
 
 const projects = [
   {
@@ -24,7 +25,7 @@ const projects = [
   },
 ];
 
-export default function Projects() {
+export default function AllProjects() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleCard = (index) => {
@@ -44,49 +45,44 @@ export default function Projects() {
             <div
               key={index}
               onClick={() => toggleCard(index)}
-              className={`shadow-sm border transition-all duration-500 overflow-hidden cursor-pointer
-                bg-white border-gray-200 hover:shadow-md
-                dark:bg-black dark:border-gray-700 dark:hover:border-purple-400
-              `}
+              className={`rounded-xl bg-[#f7f5f5] dark:bg-[#000000] shadow-md border border-gray-300 dark:border-gray-700 transition-all duration-500 overflow-hidden cursor-pointer ${
+                openIndex === index ? "max-h-[1000px]" : "max-h-[160px]"
+              }`}
             >
-              {/* Header */}
+              {/* Compact Header */}
               <div className="p-4 flex flex-col gap-2">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-                  <h3 className="text-lg font-semibold text-black dark:text-white">
-                    {project.title}
-                  </h3>
-
-                  {/* Buttons */}
-                  <span className="flex flex-row sm:flex-row gap-2 mt-2 sm:mt-0">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center justify-center gap-1 px-3 py-1 text-sm font-semibold bg-white border border-gray-300 hover:bg-gray-100 dark:bg-black dark:border-gray-600 dark:text-white dark:hover:bg-[#111]"
-                    >
-                      <ExternalLink size={14} /> Visit
-                    </a>
+                <h3 className="text-lg font-semibold text-black dark:text-white flex justify-between">
+                  {project.title}
+                  <span className="flex gap-3">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="flex items-center justify-center gap-1 px-3 py-1 text-sm font-semibold bg-black text-white border border-black hover:bg-gray-900 dark:bg-white dark:text-black dark:border-gray-300 dark:hover:bg-gray-200"
                     >
-                      <Github size={14} /> Code
+                      <Github size={18} className="text-purple-400" />
+                    </a>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink size={18} className="text-purple-400" />
                     </a>
                   </span>
-                </div>
+                </h3>
 
-                <p className="text-sm text-gray-600 dark:text-gray-400">{project.short}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {project.short}
+                </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-3 sm:mt-5">
+                <div className="flex flex-wrap gap-2 mt-4 sm:mt-7">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-[11px] font-semibold bg-black text-white dark:bg-white dark:text-black"
+                      className="px-2 py-1 text-[11px] font-semibold rounded-lg bg-black text-white dark:bg-white dark:text-black"
                     >
                       {tag}
                     </span>
@@ -95,20 +91,25 @@ export default function Projects() {
               </div>
 
               {/* Expanded Details */}
-              {openIndex === index && (
-                <div className="transition-all duration-500 p-4 flex flex-col gap-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full max-h-[400px] object-contain border border-gray-200 dark:border-gray-700"
-                  />
-                  <p className="text-gray-800 dark:text-gray-300 text-sm">{project.description}</p>
-                </div>
-              )}
+              <div
+                className={`transition-opacity duration-500 p-4 ${
+                  openIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full rounded-lg mb-4"
+                />
+                <p className="text-gray-800 dark:text-gray-300 text-sm">
+                  {project.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

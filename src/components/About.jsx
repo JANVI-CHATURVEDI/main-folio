@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import TechStack from "./TechStack";
+import Resume from "./Resume";
+import { useState } from "react";
 
 export default function About() {
+  const [showResume, setShowResume] = useState(false);
+
   return (
     <section className="py-6">
       <motion.div
@@ -14,12 +18,12 @@ export default function About() {
         <h2 className="text-[21px] font-bold text-black dark:text-gray-100">ABOUT ME</h2>
 
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
-          A frontend enthusiast passionate about crafting clean, accessible, and delightful interfaces.  
+          A frontend enthusiast passionate about crafting clean, accessible, and delightful interfaces.
           I blend <span className="text-purple-500">design intuition</span> with <span className="text-purple-500">logical problem-solving</span> to bring ideas to life.
         </p>
 
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
-          Always exploring new tools — from animations with Framer Motion to responsive layouts in React + Tailwind.  
+          Always exploring new tools — from animations with Framer Motion to responsive layouts in React + Tailwind.
           I thrive on making things <span className="italic">beautiful</span> and <span className="italic">functional</span>.
         </p>
 
@@ -27,8 +31,13 @@ export default function About() {
           Beyond code, curiosity drives me. I aim to create impactful products, contribute to open-source, and explore the intersection of UI, logic, and creativity.
         </p>
 
+        {/* Tech Stack */}
         <TechStack />
+        {/* Resume Button */}
+        <Resume />
+
+       
       </motion.div>
     </section>
   );
-}                  
+}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Header() {
-  const iconStyle = "w-5 h-5 text-purple-500"; // Tailwind classes for size & color
+  const iconStyle = "w-5 h-5 dark:text-purple-500 text-white"; // Tailwind classes for size & color
 
   const socialIcons = [
     {
